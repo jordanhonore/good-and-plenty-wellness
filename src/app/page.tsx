@@ -1,17 +1,19 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
-import Services from '@/components/sections/Services';
+import Benefits from '@/components/sections/Benefits';
 import Contact from '@/components/sections/Contact';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main>
       <Navbar />
       <Hero />
       <About />
-      <Services />
+      <Benefits />
       <Contact />
+      <Footer />
     </main>
   );
 }
