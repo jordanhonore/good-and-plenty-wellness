@@ -1,19 +1,38 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.(mp4|webm)$/,
-      use: {
-        loader: 'file-loader',
-        options: {
-          publicPath: '/_next/static/videos/',
-          outputPath: 'static/videos/',
-          name: '[name].[hash].[ext]',
-        },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'fonts.googleapis.com'
       },
-    });
-    return config;
+      {
+        protocol: 'https',
+        hostname: 'fonts.gstatic.com'
+      }
+    ]
   },
-}
+  webpack: (config) => {
+    config.watchOptions = {
+      poll: 1000,
+      aggregateTimeout: 300,
+    }
+    return config
+  },
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*'
+          }
+        ],
+      },
+    ]
+  }
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;

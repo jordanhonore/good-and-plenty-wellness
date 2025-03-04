@@ -1,13 +1,8 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Lato } from "next/font/google";
 import Image from 'next/image';
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
 
 const lato = Lato({
   subsets: ['latin'],
@@ -37,7 +32,7 @@ export default function Services() {
   const benefits = [
     {
       title: "More Personalized Care",
-      description: "Insurance often dictates the length and type of therapy. With private pay, we focus on your unique needs, not a company's restrictions."
+      description: "Insurance often dictates the length and type of therapy. With private pay, we focus on your unique needs, not a company`s restrictions."
     },
     {
       title: "Greater Privacy & Confidentiality",
@@ -45,7 +40,7 @@ export default function Services() {
     },
     {
       title: "No Diagnosis Required",
-      description: "You don't have to meet insurance criteria for a mental health disorder to receive support. Whether you're navigating life changes, relationships, stress, or personal growth, therapy is available to you—without a label."
+      description: "You don`t have to meet insurance criteria for a mental health disorder to receive support. Whether you&apos;re navigating life changes, relationships, stress, or personal growth, therapy is available to you without a label."
     },
     {
       title: "Flexible & Tailored Approach",
@@ -82,7 +77,7 @@ export default function Services() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${cormorant.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
               Services & Pricing
             </h1>
           </div>
@@ -92,7 +87,7 @@ export default function Services() {
             {services.map((service, index) => (
               <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
                 <div className="p-8 space-y-4">
-                  <h2 className={`${cormorant.className} text-2xl text-black/90`}>
+                  <h2 className={`${lato.className} text-2xl text-black/90`}>
                     {service.title}
                   </h2>
                   <p className="text-lg text-black/70">
@@ -108,18 +103,18 @@ export default function Services() {
 
           {/* Private Pay Benefits Section */}
           <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className={`${cormorant.className} text-3xl text-black/90 text-center mb-8`}>
+            <h2 className={`${lato .className} text-3xl text-black/90 text-center mb-8`}>
               Why Private Pay?
             </h2>
             
-            <p className={`${cormorant.className} text-2xl text-black/70 mb-16 font-size-16`}>
-              At Good & Plenty Wellness, I believe therapy should be flexible, confidential, and truly centered around you—not the limitations of insurance companies. Here's how private pay benefits you:
+            <p className={`${lato.className} text-2xl text-black/70 mb-16 font-size-16`}>
+              At Good & Plenty Wellness, I believe therapy should be flexible, confidential, and truly centered around you&mdash;not the limitations of insurance companies. Here&apos;s how private pay benefits you:
             </p>
 
             <div className="space-y-6">
               {benefits.map((benefit, index) => (
                 <div key={index} className="space-y-2">
-                  <h3 className={`${cormorant.className} text-2xl text-black/90`}>
+                  <h3 className={`${lato.className} text-2xl text-black/90`}>
                     {index + 1}. {benefit.title}
                   </h3>
                   <p className="text-black/70 pl-6">
@@ -130,12 +125,12 @@ export default function Services() {
             </div>
 
             <div className="space-y-4 pt-8">
-              <p className={`${cormorant.className} text-2xl text-black/70 font-size-16`}>
-                While I don't accept insurance directly, I can provide a superbill upon request, which you may submit to your insurance for potential reimbursement (depending on your plan).
+              <p className={`${lato.className} text-2xl text-black/70`}>
+                While I don`t accept insurance directly, I can provide a superbill upon request, which you may submit to your insurance for potential reimbursement.
               </p>
               
-              <p className={`${cormorant.className} text-2xl text-black/70`}>
-                Investing in therapy is an investment in yourself. If you have any questions about payment options or want to see if we're a good fit, feel free to reach out!
+              <p className={`${lato.className} text-2xl text-black/70`}>
+                Investing in therapy is an investment in yourself. Let`s find a rate that works for you! If you have any questions about payment options or want to see if we`re a good fit, feel free to reach out!
               </p>
             </div>
           </div>

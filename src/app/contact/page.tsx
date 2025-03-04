@@ -1,17 +1,9 @@
 'use client';
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Cormorant_Garamond, Lato } from "next/font/google";
-import { useFormStatus } from 'react-dom';
-import { useActionState } from 'react';
-import { sendEmail } from '../actions/sendEmail';
+import { Lato } from "next/font/google";
 import Image from 'next/image';
-
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
 
 const lato = Lato({
   subsets: ['latin'],
@@ -19,56 +11,46 @@ const lato = Lato({
   display: 'swap',
 });
 
-// Initial state for the form
-type FormState = {
-  message: string;
-  success: boolean;
-  error: string | undefined;
-};
-
-const initialState: FormState = {
-  message: '',
-  success: false,
-  error: undefined
-};
-
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className={`${lato.className} w-full px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light disabled:bg-black/40`}
-    >
-      {pending ? 'Sending...' : 'Send Message'}
-    </button>
-  );
-}
 export default function Contact() {
-  const [state, formAction] = useActionState<FormState>(
-    async (state: FormState) => {
-      // Return current state if no form data
-      if (!state) return initialState;
-      
-      try {
-        const formData = new FormData();
-        const result = await sendEmail(formData);
-        return {
-          message: result.error || '',
-          success: result.success,
-          error: result.error
-        };
-      } catch (error) {
-        return {
-          message: 'Failed to send message',
-          success: false,
-          error: 'An error occurred'
-        };
+  const [isLoading, setIsLoading] = useState(false);
+  const [message, setMessage] = useState('');
+  const [error, setError] = useState('');
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsLoading(true);
+    setMessage('');
+    setError('');
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      phone: formData.get('phone'),
+      message: formData.get('message'),
+    };
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
       }
-    },
-    initialState
-  );
+
+      setMessage('Message sent successfully!');
+      form.reset();
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setError('Failed to send message. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  }
 
   return (
     <main className="min-h-screen bg-white">
@@ -85,7 +67,7 @@ export default function Contact() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${cormorant.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
               Contact Us
             </h1>
           </div>
@@ -93,7 +75,7 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-6">
-              <h2 className={`${cormorant.className} text-2xl text-black/90`}>
+              <h2 className={`${lato.className} text-2xl text-black/90`}>
                 Get In Touch
               </h2>
               <p className="text-lg text-black/70">
@@ -114,7 +96,7 @@ export default function Contact() {
             </div>
 
             {/* Contact Form */}
-            <form action={formAction} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-black/70 mb-2" htmlFor="name">Name</label>
                 <input 
@@ -156,13 +138,19 @@ export default function Contact() {
                 ></textarea>
               </div>
               
-              <SubmitButton />
-              
-              {state?.success && (
-                <p className="text-green-600">Message sent successfully!</p>
+              <button
+                type="submit"
+                disabled={isLoading}
+                className={`${lato.className} w-full px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light disabled:bg-black/40`}
+              >
+                {isLoading ? 'Sending...' : 'Send Message'}
+              </button>
+
+              {message && (
+                <p className="text-green-600">{message}</p>
               )}
-              {state?.error && (
-                <p className="text-red-600">{state.error}</p>
+              {error && (
+                <p className="text-red-600">{error}</p>
               )}
             </form>
           </div>

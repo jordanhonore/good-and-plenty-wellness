@@ -1,13 +1,7 @@
 import Section from './Section';
-import { Cormorant_Garamond } from "next/font/google";
 import Image from 'next/image';
 import { Lato } from "next/font/google";
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
 
 const lato = Lato({ 
   subsets: ["latin"],
@@ -66,7 +60,7 @@ const Benefits = () => {
           </div>
 
           <div className="max-w-3xl mx-auto">
-            <h2 className={`${cormorant.className} text-4xl md:text-5xl tracking-wide text-black/90 mb-6`}>
+            <h2 className={`${lato.className} text-4xl md:text-5xl tracking-wide text-black/90 mb-6`}>
               Our Specialties
             </h2>
           </div>
@@ -77,7 +71,7 @@ const Benefits = () => {
                 key={index} 
                 className="text-center space-y-4"
               >
-                <h3 className={`${cormorant.className} text-2xl tracking-wide text-black/90`}>
+                <h3 className={`${lato.className} text-2xl tracking-wide text-black/90`}>
                   {specialty.title}
                 </h3>
                 <p className="text-black/70 leading-relaxed">

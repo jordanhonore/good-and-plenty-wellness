@@ -1,14 +1,9 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Lato } from "next/font/google";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
 
 const lato = Lato({
   subsets: ['latin'],
@@ -20,7 +15,7 @@ export default function WalkAndTalk() {
   const benefits = [
     {
       title: "Reduced Anxiety & Stress",
-      description: "The combination of movement and nature helps activate your body's natural relaxation response, making it easier to process difficult emotions."
+      description: "The combination of movement and nature helps activate your body&apos;s natural relaxation response, making it easier to process difficult emotions."
     },
     {
       title: "Enhanced Mind-Body Connection",
@@ -67,40 +62,40 @@ export default function WalkAndTalk() {
               />
             </div>
             
-            <h1 className={`${cormorant.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
               Walk & Talk Therapy
             </h1>
           </div>
 
           <div className="prose max-w-none space-y-8">
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className={`${cormorant.className} text-3xl text-black/90 mb-6`}>
+              <h2 className={`${lato.className} text-3xl text-black/90 mb-6`}>
                 What is Walk & Talk Therapy?
               </h2>
               
-              <p className={`${cormorant.className} text-xl text-black/70 mb-8`}>
-                Sometimes, healing happens best when we're moving. Walk-and-talk therapy integrates traditional talk therapy with somatic techniques that help regulate the nervous system and process emotions through movement.
+              <p className={`${lato.className} text-xl text-black/70 mb-8`}>
+                Sometimes, healing happens best when we&apos;re moving. Walk-and-talk therapy integrates traditional talk therapy with somatic techniques that help regulate the nervous system and process emotions through movement.
               </p>
               
-              <p className={`${cormorant.className} text-xl text-black/70 mb-8`}>
+              <p className={`${lato.className} text-xl text-black/70 mb-8`}>
                 Walking in nature or engaging in gentle movement can help release stress, increase mind-body awareness, and create a deeper sense of connection between thoughts and emotions.
               </p>
               
-              <p className={`${cormorant.className} text-xl text-black/70`}>
+              <p className={`${lato.className} text-xl text-black/70`}>
                 This approach is great for those who feel stuck in their bodies or struggle to express feelings in a traditional seated session.
               </p>
             </div>
 
             {/* Benefits Grid */}
             <div className="mt-20">
-              <h2 className={`${cormorant.className} text-3xl text-black/90 text-center mb-12`}>
+              <h2 className={`${lato.className} text-3xl text-black/90 text-center mb-12`}>
                 Benefits of Movement in Therapy
               </h2>
               
               <div className="grid md:grid-cols-2 gap-8">
                 {benefits.map((benefit, index) => (
                   <div key={index} className="bg-white/50 rounded-lg p-6 shadow-sm">
-                    <h3 className={`${cormorant.className} text-2xl text-black/90 mb-4`}>
+                    <h3 className={`${lato.className} text-2xl text-black/90 mb-4`}>
                       {benefit.title}
                     </h3>
                     <p className="text-black/70">

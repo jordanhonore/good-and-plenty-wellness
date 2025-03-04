@@ -38,7 +38,9 @@ const Hero = () => {
           {/* Right Column - Text Content */}
           <div className="space-y-8 text-center max-w-xl mx-auto">
             <p className={`${lato.className} text-4xl md:text-4xl text-black/80 font-light`}>
-              We Believe True Wellness Starts From Within
+            Your journey to balance, resilience, and joy begins at 
+            <br />
+            Good & Plenty Wellness
             </p>
             <div>
               <a 

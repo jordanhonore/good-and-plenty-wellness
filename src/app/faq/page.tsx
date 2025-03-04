@@ -2,15 +2,11 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Cormorant_Garamond, Lato } from "next/font/google";
+import { Lato } from "next/font/google";
 import Link from 'next/link';
 import Image from 'next/image';
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
+
 
 const lato = Lato({
   subsets: ['latin'],
@@ -69,7 +65,7 @@ export default function FAQ() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${cormorant.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
               FAQs
             </h1>
           </div>
@@ -81,7 +77,7 @@ export default function FAQ() {
                   className="w-full py-6 flex justify-between items-center text-left"
                   onClick={() => setExpandedId(expandedId === faq.id ? null : faq.id)}
                 >
-                  <h2 className={`${cormorant.className} text-2xl text-black/90 pr-8`}>
+                  <h2 className={`${lato.className} text-2xl text-black/90 pr-8`}>
                     {faq.question}
                   </h2>
                   <svg 

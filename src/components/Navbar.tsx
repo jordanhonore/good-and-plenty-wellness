@@ -1,111 +1,117 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Cormorant_Garamond } from "next/font/google";
+import { Lato } from "next/font/google";
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
+const lato = Lato({
+  subsets: ['latin'],
+  weight: ['300', '400', '700'],
   display: 'swap',
 });
 
-const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 50);
-      setLastScrollY(currentScrollY);
-      setIsScrolled(currentScrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [lastScrollY]);
-
-  const handleMouseEnter = () => {
-    if (!isVisible) setIsVisible(true);
-  };
-
-  const navItems = [
-    {
-      title: "HOME",
-      href: "/"
-    },
-    {
-      title: "SERVICES",
-      href: "/services"
-    },
-    {
-      title: "MEET YOUR THERAPIST",
-      href: "/team"
-    },
-    {
-      title: "WALK & TALK THERAPY",
-      href: "/walk-and-talk"
-    },
-    {
-      title: "FAQ",
-      href: "/faq"
-    },
-    {
-      title: "CONTACT",
-      href: "/contact"
-    }
-  ];
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
-      {/* Invisible hover area */}
-      <div 
-        className="fixed top-0 w-full h-4 z-50"
-        onMouseEnter={handleMouseEnter}
-      />
-      
-      <nav className={`fixed top-0 w-full bg-white/80 z-40 shadow-sm transition-transform duration-300 ${
-        isVisible ? 'translate-y-0' : '-translate-y-full'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center py-4">
-            {/* Logo */}
-            <div className={`relative w-64 h-24 mb-4 transition-all duration-300 ${
-              isScrolled ? 'scale-75' : ''
-            }`}>
-              <Link href="/">
-                <Image
-                  src="/images/gnp_wellness.png"
-                  alt="Good and Plenty Wellness"
-                  fill
-                  style={{ objectFit: 'contain' }}
-                  priority
-                />
-              </Link>
-            </div>
+    <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image src="/images/gnp_wellness.png" alt="Good & Plenty Wellness Icon" width={100} height={100} />
+          </Link>
 
-            {/* Navigation and CTA Container */}
-            <div className="w-full flex justify-center items-center">
-              {/* Centered Navigation Links */}
-              <div className="flex space-x-8">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.title}
-                    href={item.href}
-                    className={`${cormorant.className} px-3 py-2 text-black/80 hover:text-black text-lg tracking-wider`}
-                  >
-                    {item.title}
-                  </Link>
-                ))}
-              </div>
-            </div>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2"
+            aria-label="Toggle menu"
+          >
+            <svg
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/services" className="text-black/70 hover:text-black">Services</Link>
+            <Link href="/walk-and-talk" className="text-black/70 hover:text-black">Walk & Talk</Link>
+            <Link href="/team" className="text-black/70 hover:text-black">Team</Link>
+            <Link href="/faq" className="text-black/70 hover:text-black">FAQ</Link>
+            <Link 
+              href="/contact"
+              className={`${lato.className} px-4 py-2 bg-black/60 text-white hover:bg-black/90 transition-colors font-light`}
+            >
+              Contact
+            </Link>
           </div>
         </div>
-      </nav>
-    </>
-  );
-};
 
-export default Navbar; 
+        {/* Mobile Navigation */}
+        <div
+          className={`md:hidden transition-all duration-300 ease-in-out ${
+            isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          } overflow-hidden`}
+        >
+          <div className="px-2 pt-2 pb-3 space-y-1">
+            <Link
+              href="/services"
+              className="block px-3 py-2 text-black/70 hover:text-black"
+              onClick={() => setIsOpen(false)}
+            >
+              Services
+            </Link>
+            <Link
+              href="/walk-and-talk"
+              className="block px-3 py-2 text-black/70 hover:text-black"
+              onClick={() => setIsOpen(false)}
+            >
+              Walk & Talk
+            </Link>
+            <Link
+              href="/team"
+              className="block px-3 py-2 text-black/70 hover:text-black"
+              onClick={() => setIsOpen(false)}
+            >
+              Team
+            </Link>
+            <Link
+              href="/faq"
+              className="block px-3 py-2 text-black/70 hover:text-black"
+              onClick={() => setIsOpen(false)}
+            >
+              FAQ
+            </Link>
+            <Link
+              href="/contact"
+              className="block px-3 py-2 text-black/70 hover:text-black"
+              onClick={() => setIsOpen(false)}
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
+} 

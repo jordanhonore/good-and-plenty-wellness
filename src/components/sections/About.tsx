@@ -1,13 +1,7 @@
 import Section from './Section';
 import Image from 'next/image';
-import { Cormorant_Garamond } from "next/font/google";
 import { Lato } from "next/font/google";
 
-const cormorant = Cormorant_Garamond({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '500', '600', '700'],
-  display: 'swap',
-});
 
 const lato = Lato({ 
   subsets: ["latin"],
@@ -17,16 +11,7 @@ const lato = Lato({
 
 const About = () => {
   return (
-    <Section id="about" className="relative py-20">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed"
-        style={{
-          backgroundImage: 'url("/images/wellnessscene2.jpg")',
-          opacity: '0.15'  // Adjust this value to make image more/less visible
-        }}
-      />
-
+    <Section id="about" className="relative py-20 bg-[#F5E6D7]">
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-12">
           <div className="relative w-24 h-24 mx-auto mb-6">
@@ -38,21 +23,13 @@ const About = () => {
             />
           </div>
           
-          <h2 className={`${cormorant.className} text-4xl md:text-5xl tracking-wide text-black/90`}>
+          <h2 className={`${lato.className} text-4xl md:text-5xl tracking-wide text-black/90`}>
             About Us
           </h2>
           
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <div className="space-y-6">
-              <h3 className={`${cormorant.className} text-2xl md:text-3xl tracking-wide text-black/80`}>
-                Professional Mental Health Services
-              </h3>
-              <p className="text-lg leading-relaxed text-black/70">
-                We provide professional therapy services in a welcoming and supportive environment. 
-                Our experienced therapists offer individual counseling, couples therapy, and specialized 
-                workshops designed to support your mental health journey. We believe in a holistic 
-                approach that considers the whole person in the healing process.
-              </p>
+              
             </div>
 
             <div className="space-y-6">
