@@ -1,17 +1,50 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Lato } from "next/font/google";
 
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
+
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+
+  const SIMPLEPRACTICE_SCOPE_ID = process.env.NEXT_PUBLIC_SIMPLEPRACTICE_SCOPE_ID;
+  const SIMPLEPRACTICE_SCOPE_URI = process.env.NEXT_PUBLIC_SIMPLEPRACTICE_SCOPE_URI;
+  const SIMPLEPRACTICE_APP_ID = process.env.NEXT_PUBLIC_SIMPLEPRACTICE_APP_ID;
+
+  useEffect(() => {
+    // Load SimplePractice widget script
+    const script = document.createElement('script');
+    script.src = 'https://widget-cdn.simplepractice.com/assets/integration-1.0.js';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const appointmentButtonStyle = {
+    display: 'inline-block',
+    padding: '12px 24px',
+    color: '#fff',
+    background: '#8BA888',
+    border: 0,
+    borderRadius: '4px',
+    fontSize: '16px',
+    fontWeight: 600,
+    textDecoration: 'none',
+    transition: 'background 0.2s ease',
+    ':hover': {
+      background: '#d15913',
+      color: '#fff'
+    },
+    ':active': {
+      color: 'rgba(255, 255, 255, .75)',
+      boxShadow: '0 1px 3px rgba(0, 0, 0, .15) inset'
+    }
+  };
 
   return (
     <nav className="fixed w-full bg-white/95 backdrop-blur-sm z-50 shadow-sm">
@@ -58,12 +91,19 @@ export default function Navbar() {
             <Link href="/walk-and-talk" className="text-black/70 hover:text-black">Walk & Talk</Link>
             <Link href="/team" className="text-black/70 hover:text-black">Team</Link>
             <Link href="/faq" className="text-black/70 hover:text-black">FAQ</Link>
-            <Link 
-              href="/contact"
-              className={`${lato.className} px-4 py-2 bg-black/60 text-white hover:bg-black/90 transition-colors font-light`}
+            <Link href="/contact" className="text-black/70 hover:text-black">Contact</Link>
+            <a
+              href={`https://${SIMPLEPRACTICE_SCOPE_URI}.clientsecure.me`}
+              className="spwidget-button"
+              data-spwidget-scope-id={SIMPLEPRACTICE_SCOPE_ID}
+              data-spwidget-scope-uri={SIMPLEPRACTICE_SCOPE_URI}
+              data-spwidget-application-id={SIMPLEPRACTICE_APP_ID}
+              data-spwidget-scope-global
+              data-spwidget-autobind
+              style={appointmentButtonStyle}
             >
-              Contact
-            </Link>
+              Schedule Appointment
+            </a>
           </div>
         </div>
 
@@ -109,6 +149,19 @@ export default function Navbar() {
             >
               Contact
             </Link>
+            <a
+              href={`https://${SIMPLEPRACTICE_SCOPE_URI}.clientsecure.me`}
+              className="spwidget-button block px-3 py-2"
+              data-spwidget-scope-id={SIMPLEPRACTICE_SCOPE_ID}
+              data-spwidget-scope-uri={SIMPLEPRACTICE_SCOPE_URI}
+              data-spwidget-application-id={SIMPLEPRACTICE_APP_ID}
+              data-spwidget-scope-global
+              data-spwidget-autobind
+              style={appointmentButtonStyle}
+              onClick={() => setIsOpen(false)}
+            >
+              Request Appointment
+            </a>
           </div>
         </div>
       </div>
