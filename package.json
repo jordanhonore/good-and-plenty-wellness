@@ -9,7 +9,7 @@
     "vercel-build": "next build"
   },
   "dependencies": {
-    "next": "^15.1.7",
+    "next": "15.1.11",
     "nodemailer": "^6.10.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
