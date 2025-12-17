@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 import Image from 'next/image';
+import Link from 'next/link';
 import { getAllPosts } from '@/lib/blog';
 
 export default async function Home() {
@@ -353,12 +354,12 @@ export default async function Home() {
           {/* View All Link */}
           <AnimateOnScroll animation="fade-up" delay={400}>
             <div className="text-center mt-12">
-              <a
+              <Link
                 href="/blog"
                 className="inline-block px-8 py-3 border border-black/80 text-black/80 tracking-widest text-sm hover:bg-black hover:text-white transition-all duration-300"
               >
                 VIEW ALL ARTICLES
-              </a>
+              </Link>
             </div>
           </AnimateOnScroll>
         </div>
