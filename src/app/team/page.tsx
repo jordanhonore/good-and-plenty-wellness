@@ -2,15 +2,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Lato } from "next/font/google";
 import Image from 'next/image';
-
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
 
 const teamMembers = [
   {
@@ -73,7 +65,7 @@ export default function Team() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className="font-serif text-4xl md:text-5xl text-black/90">
               Meet Your Therapist
             </h1>
           </div>
@@ -100,7 +92,7 @@ export default function Team() {
 
                 {/* Content Section - Better padding on mobile */}
                 <div className="p-4 md:p-6">
-                  <h2 className={`${lato.className} text-2xl text-black/90 mb-2`}>
+                  <h2 className="font-serif text-2xl text-black/90 mb-2">
                     {teamMembers[0].name}
                   </h2>
                   <p className="text-black/70 mb-4">{teamMembers[0].role}</p>
@@ -109,7 +101,7 @@ export default function Team() {
                   {/* Read More Button */}
                   <button
                     onClick={() => setExpandedId(expandedId === teamMembers[0].id ? null : teamMembers[0].id)}
-                    className={`${lato.className} inline-flex items-center text-black/70 hover:text-black transition-colors`}
+                    className="inline-flex items-center text-black/70 hover:text-black transition-colors"
                   >
                     <span className="mr-2">{expandedId === teamMembers[0].id ? 'Read Less' : 'Read More'}</span>
                     <svg 
@@ -128,7 +120,7 @@ export default function Team() {
                       <p className="text-black/70">{teamMembers[0].fullBio}</p>
                       <p className="text-black/70">{teamMembers[0].additionalInfo}</p>
                       <div>
-                        <h3 className={`${lato.className} text-2xl text-black/90 mb-4`}>
+                        <h3 className="font-serif text-2xl text-black/90 mb-4">
                           My Therapeutic Approach
                         </h3>
                         

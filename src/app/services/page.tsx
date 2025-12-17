@@ -1,38 +1,30 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Lato } from "next/font/google";
 import Image from 'next/image';
-
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
 
 export default function Services() {
   const services = [
     {
-      title: <b>Individual Therapy</b>,
-      description: "One-on-one support tailored to your unique needs, focusing on personal growth, emotional well-being, and coping strategies for challenges such as anxiety, depression, and life transtitions.",
-      price: <b>$50/50-minute session</b>
+      title: "Individual Therapy",
+      description: "One-on-one support tailored to your unique needs, focusing on personal growth, emotional well-being, and coping strategies for challenges such as anxiety, depression, and life transitions.",
+      price: "$50/50-minute session"
     },
     {
-      title: <b>Couples & Family Therapy</b>,
+      title: "Couples & Family Therapy",
       description: "Designed to strengthen relationships through improved communication, conflict resolution, and deeper emotional connection. Whether you're a couple or a family, these sessions provide a safe space to work through challenges together.",
-      price: <b>$100/50-minute session</b>
+      price: "$100/50-minute session"
     },
     {
-      title: <b>Group Therapy</b>,
+      title: "Group Therapy",
       description: "A supportive, therapist-led environment where individuals with shared experiences can connect, learn, and grow together. Groups may focus on topics such as stress-management, grief, self-esteem, or relational-dynamics.",
-      price: <b>$30/50-minute session</b>
+      price: "$30/50-minute session"
     }
   ];
 
   const benefits = [
     {
       title: "More Personalized Care",
-      description: "Insurance often dictates the length and type of therapy. With private pay, we focus on your unique needs, not a company`s restrictions."
+      description: "Insurance often dictates the length and type of therapy. With private pay, we focus on your unique needs, not a company's restrictions."
     },
     {
       title: "Greater Privacy & Confidentiality",
@@ -40,7 +32,7 @@ export default function Services() {
     },
     {
       title: "No Diagnosis Required",
-      description: "You don`t have to meet insurance criteria for a mental health disorder to receive support. Whether you&apos;re navigating life changes, relationships, stress, or personal growth, therapy is available to you without a label."
+      description: "You don't have to meet insurance criteria for a mental health disorder to receive support. Whether you are navigating life changes, relationships, stress, or personal growth, therapy is available to you without a label."
     },
     {
       title: "Flexible & Tailored Approach",
@@ -55,14 +47,14 @@ export default function Services() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      
+
       <section className="pt-48 pb-20 relative">
         {/* Background Image */}
-        <div 
+        <div
           className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed"
           style={{
             backgroundImage: 'url("/images/gnpoffice.png")',
-            opacity: '0.15'  // Adjust this value to make image more/less visible
+            opacity: '0.15'
           }}
         />
 
@@ -77,23 +69,23 @@ export default function Services() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className="font-serif text-4xl md:text-5xl text-black/90">
               Services & Pricing
             </h1>
           </div>
-          
+
           {/* Service Cards */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             {services.map((service, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
                 <div className="p-8 space-y-4">
-                  <h2 className={`${lato.className} text-2xl text-black/90`}>
+                  <h2 className="font-serif text-2xl text-black/90 font-semibold">
                     {service.title}
                   </h2>
                   <p className="text-lg text-black/70">
                     {service.description}
                   </p>
-                  <p className={`${lato.className} text-xl font-medium text-black/80`}>
+                  <p className="font-serif text-xl font-semibold text-black/80">
                     {service.price}
                   </p>
                 </div>
@@ -103,18 +95,18 @@ export default function Services() {
 
           {/* Private Pay Benefits Section */}
           <div className="max-w-4xl mx-auto space-y-8">
-            <h2 className={`${lato .className} text-3xl text-black/90 text-center mb-8`}>
+            <h2 className="font-serif text-3xl text-black/90 text-center mb-8">
               Why Private Pay?
             </h2>
-            
-            <p className={`${lato.className} text-2xl text-black/70 mb-16 font-size-16`}>
+
+            <p className="text-xl text-black/70 mb-16">
               At Good & Plenty Wellness, I believe therapy should be flexible, confidential, and truly centered around you&mdash;not the limitations of insurance companies. Here&apos;s how private pay benefits you:
             </p>
 
             <div className="space-y-6">
               {benefits.map((benefit, index) => (
                 <div key={index} className="space-y-2">
-                  <h3 className={`${lato.className} text-2xl text-black/90`}>
+                  <h3 className="font-serif text-2xl text-black/90">
                     {index + 1}. {benefit.title}
                   </h3>
                   <p className="text-black/70 pl-6">
@@ -125,12 +117,12 @@ export default function Services() {
             </div>
 
             <div className="space-y-4 pt-8">
-              <p className={`${lato.className} text-2xl text-black/70`}>
-                While I don`t accept insurance directly, I can provide a superbill upon request, which you may submit to your insurance for potential reimbursement.
+              <p className="text-xl text-black/70">
+                While I don&apos;t accept insurance directly, I can provide a superbill upon request, which you may submit to your insurance for potential reimbursement.
               </p>
-              
-              <p className={`${lato.className} text-2xl text-black/70`}>
-                Investing in therapy is an investment in yourself. Let`s find a rate that works for you! If you have any questions about payment options or want to see if we`re a good fit, feel free to reach out!
+
+              <p className="text-xl text-black/70">
+                Investing in therapy is an investment in yourself. Let&apos;s find a rate that works for you! If you have any questions about payment options or want to see if we&apos;re a good fit, feel free to reach out!
               </p>
             </div>
           </div>

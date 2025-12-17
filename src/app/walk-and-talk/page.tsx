@@ -1,15 +1,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Lato } from "next/font/google";
 import Image from 'next/image';
 import Link from 'next/link';
-
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
 
 export default function WalkAndTalk() {
   const benefits = [
@@ -62,40 +54,40 @@ export default function WalkAndTalk() {
               />
             </div>
             
-            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className="font-serif text-4xl md:text-5xl text-black/90">
               Walk & Talk Therapy
             </h1>
           </div>
 
-          <div className="prose max-w-none space-y-8">
+          <div className="max-w-none space-y-8">
             <div className="text-center max-w-3xl mx-auto">
-              <h2 className={`${lato.className} text-3xl text-black/90 mb-6`}>
+              <h2 className="font-serif text-3xl text-black/90 mb-6">
                 What is Walk & Talk Therapy?
               </h2>
-              
-              <p className={`${lato.className} text-xl text-black/70 mb-8`}>
+
+              <p className="text-xl text-black/70 mb-8">
                 Sometimes, healing happens best when we&apos;re moving. Walk-and-talk therapy integrates traditional talk therapy with somatic techniques that help regulate the nervous system and process emotions through movement.
               </p>
-              
-              <p className={`${lato.className} text-xl text-black/70 mb-8`}>
+
+              <p className="text-xl text-black/70 mb-8">
                 Walking in nature or engaging in gentle movement can help release stress, increase mind-body awareness, and create a deeper sense of connection between thoughts and emotions.
               </p>
-              
-              <p className={`${lato.className} text-xl text-black/70`}>
+
+              <p className="text-xl text-black/70">
                 This approach is great for those who feel stuck in their bodies or struggle to express feelings in a traditional seated session.
               </p>
             </div>
 
             {/* Benefits Grid */}
             <div className="mt-20">
-              <h2 className={`${lato.className} text-3xl text-black/90 text-center mb-12`}>
+              <h2 className="font-serif text-3xl text-black/90 text-center mb-12">
                 Benefits of Movement in Therapy
               </h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {benefits.map((benefit, index) => (
-                  <div key={index} className="bg-white/50 rounded-lg p-6 shadow-sm">
-                    <h3 className={`${lato.className} text-2xl text-black/90 mb-4`}>
+                  <div key={index} className="bg-white/50 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <h3 className="font-serif text-2xl text-black/90 mb-4">
                       {benefit.title}
                     </h3>
                     <p className="text-black/70">
@@ -108,9 +100,9 @@ export default function WalkAndTalk() {
 
             {/* CTA Section */}
             <div className="text-center mt-16">
-              <Link 
+              <Link
                 href="/contact"
-                className={`${lato.className} inline-block px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light`}
+                className="inline-block px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light"
               >
                 Book Your Free 15 Min Consultation Now
               </Link>

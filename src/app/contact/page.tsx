@@ -2,14 +2,7 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Lato } from "next/font/google";
 import Image from 'next/image';
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
@@ -55,7 +48,7 @@ export default function Contact() {
   return (
     <main className="min-h-screen bg-white">
       <Navbar />
-      
+
       <section className="pt-48 pb-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center space-y-8 mb-16">
@@ -67,7 +60,7 @@ export default function Contact() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className="font-serif text-4xl md:text-5xl text-black/90">
               Contact Us
             </h1>
           </div>
@@ -75,11 +68,11 @@ export default function Contact() {
           <div className="grid md:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div className="space-y-6">
-              <h2 className={`${lato.className} text-2xl text-black/90`}>
+              <h2 className="font-serif text-2xl text-black/90">
                 Get In Touch
               </h2>
               <p className="text-lg text-black/70">
-                Ready to start your wellness journey? Schedule your free 15-minute consultation 
+                Ready to start your wellness journey? Schedule your free 15-minute consultation
                 or reach out with any questions you may have.
               </p>
               <div className="space-y-4">
@@ -99,49 +92,49 @@ export default function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-black/70 mb-2" htmlFor="name">Name</label>
-                <input 
+                <input
                   id="name"
                   name="name"
                   type="text"
                   required
-                  className="w-full p-2 border border-black/20 rounded"
+                  className="w-full p-3 border border-black/20 rounded focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
                 />
               </div>
               <div>
                 <label className="block text-black/70 mb-2" htmlFor="email">Email</label>
-                <input 
+                <input
                   id="email"
                   name="email"
                   type="email"
                   required
-                  className="w-full p-2 border border-black/20 rounded"
+                  className="w-full p-3 border border-black/20 rounded focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
                 />
               </div>
               <div>
                 <label className="block text-black/70 mb-2" htmlFor="phone">Phone</label>
-                <input 
+                <input
                   id="phone"
                   name="phone"
                   type="tel"
                   required
-                  className="w-full p-2 border border-black/20 rounded"
+                  className="w-full p-3 border border-black/20 rounded focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
                 />
               </div>
               <div>
                 <label className="block text-black/70 mb-2" htmlFor="message">Message</label>
-                <textarea 
+                <textarea
                   id="message"
                   name="message"
                   rows={4}
                   required
-                  className="w-full p-2 border border-black/20 rounded"
+                  className="w-full p-3 border border-black/20 rounded focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"
                 ></textarea>
               </div>
-              
+
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`${lato.className} w-full px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light disabled:bg-black/40`}
+                className="w-full px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light disabled:bg-black/40"
               >
                 {isLoading ? 'Sending...' : 'Send Message'}
               </button>

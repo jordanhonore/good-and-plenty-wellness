@@ -2,17 +2,8 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Lato } from "next/font/google";
 import Link from 'next/link';
 import Image from 'next/image';
-
-
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
 
 export default function FAQ() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
@@ -65,7 +56,7 @@ export default function FAQ() {
                 style={{ objectFit: 'contain' }}
               />
             </div>
-            <h1 className={`${lato.className} text-4xl md:text-5xl text-black/90`}>
+            <h1 className="font-serif text-4xl md:text-5xl text-black/90">
               FAQs
             </h1>
           </div>
@@ -77,7 +68,7 @@ export default function FAQ() {
                   className="w-full py-6 flex justify-between items-center text-left"
                   onClick={() => setExpandedId(expandedId === faq.id ? null : faq.id)}
                 >
-                  <h2 className={`${lato.className} text-2xl text-black/90 pr-8`}>
+                  <h2 className="font-serif text-2xl text-black/90 pr-8">
                     {faq.question}
                   </h2>
                   <svg 
@@ -107,9 +98,9 @@ export default function FAQ() {
 
           {/* Consultation CTA */}
           <div className="text-center pt-8">
-            <Link 
+            <Link
               href="/contact"
-              className={`${lato.className} inline-block px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light`}
+              className="inline-block px-8 py-4 bg-black/60 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light"
             >
               Book Your Free 15 Min Consultation Now
             </Link>

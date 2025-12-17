@@ -1,11 +1,5 @@
 import Section from './Section';
-import { Lato } from "next/font/google";
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['100', '300', '400', '700'],
-  display: 'swap',
-});
+import AnimateOnScroll from '../AnimateOnScroll';
 
 const Hero = () => {
   return (
@@ -19,10 +13,8 @@ const Hero = () => {
           playsInline
           preload="auto"
           className="absolute w-full h-full object-cover"
-          
         >
           <source src="./images/gnpleavesvideo.mp4" type="video/mp4" />
-        
         </video>
         {/* Overlay */}
         <div className="absolute inset-0 bg-white/30" />
@@ -37,19 +29,21 @@ const Hero = () => {
 
           {/* Right Column - Text Content */}
           <div className="space-y-8 text-center max-w-xl mx-auto">
-            <p className={`${lato.className} text-4xl md:text-4xl text-black/80 font-light`}>
-            Your journey to balance, resilience, and joy begins at 
-            <br />
-            Good & Plenty Wellness
-            </p>
-            <div>
-              <a 
+            <AnimateOnScroll animation="fade-up">
+              <p className="font-serif text-3xl md:text-4xl text-white font-light leading-relaxed">
+                Your journey to balance, resilience, and joy begins at
+                <br />
+                Good & Plenty Wellness
+              </p>
+            </AnimateOnScroll>
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <a
                 href="#about"
-                className={`${lato.className} inline-block px-8 py-4 bg-black/40 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light`}
+                className="inline-block px-8 py-4 bg-black/40 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light"
               >
                 LEARN MORE
               </a>
-            </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </div>

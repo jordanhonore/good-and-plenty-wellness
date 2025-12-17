@@ -1,13 +1,6 @@
 import Section from './Section';
 import Image from 'next/image';
-import { Lato } from "next/font/google";
-
-
-const lato = Lato({ 
-  subsets: ["latin"],
-  weight: ['300', '400', '700'],
-  display: 'swap',
-});
+import AnimateOnScroll from '../AnimateOnScroll';
 
 const specialties = [
   {
@@ -40,56 +33,65 @@ const Benefits = () => {
   return (
     <Section id="benefits" className="relative py-20">
       {/* Background Image */}
-      <div 
+      <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-fixed"
         style={{
           backgroundImage: 'url("/images/gnpwildflower.jpg")',
-          opacity: '0.20'  // Adjust this value to make image more/less visible
+          opacity: '0.20'
         }}
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-12">
-          <div className="relative w-24 h-24 mx-auto mb-6">
-            <Image
-              src="/images/gnp_icon.png"
-              alt="Good and Plenty Wellness Icon"
-              fill
-              style={{ objectFit: 'contain' }}
-            />
-          </div>
+          <AnimateOnScroll animation="fade-in">
+            <div className="relative w-24 h-24 mx-auto mb-6">
+              <Image
+                src="/images/gnp_icon.png"
+                alt="Good and Plenty Wellness Icon"
+                fill
+                style={{ objectFit: 'contain' }}
+              />
+            </div>
+          </AnimateOnScroll>
 
-          <div className="max-w-3xl mx-auto">
-            <h2 className={`${lato.className} text-4xl md:text-5xl tracking-wide text-black/90 mb-6`}>
-              Our Specialties
-            </h2>
-          </div>
-          
+          <AnimateOnScroll animation="fade-up">
+            <div className="max-w-3xl mx-auto">
+              <h2 className="font-serif text-4xl md:text-5xl tracking-wide text-black/90 mb-6">
+                Our Specialties
+              </h2>
+            </div>
+          </AnimateOnScroll>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {specialties.map((specialty, index) => (
-              <div 
-                key={index} 
-                className="text-center space-y-4"
+              <AnimateOnScroll
+                key={index}
+                animation="fade-up"
+                delay={index * 100}
               >
-                <h3 className={`${lato.className} text-2xl tracking-wide text-black/90`}>
-                  {specialty.title}
-                </h3>
-                <p className="text-black/70 leading-relaxed">
-                  {specialty.description}
-                </p>
-              </div>
+                <div className="text-center space-y-4">
+                  <h3 className="font-serif text-2xl tracking-wide text-black/90">
+                    {specialty.title}
+                  </h3>
+                  <p className="text-black/70 leading-relaxed">
+                    {specialty.description}
+                  </p>
+                </div>
+              </AnimateOnScroll>
             ))}
           </div>
 
           {/* Pricing Button */}
-          <div className="pt-12">
-            <a 
-              href="/services"
-              className={`${lato.className} inline-block px-8 py-4 bg-black/40 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light`}
-            >
-              VIEW PRICING & SERVICES
-            </a>
-          </div>
+          <AnimateOnScroll animation="fade-up" delay={600}>
+            <div className="pt-12">
+              <a
+                href="/services"
+                className="inline-block px-8 py-4 bg-black/40 text-white text-lg tracking-wider hover:bg-black/90 transition-colors font-light"
+              >
+                VIEW PRICING & SERVICES
+              </a>
+            </div>
+          </AnimateOnScroll>
         </div>
       </div>
     </Section>
